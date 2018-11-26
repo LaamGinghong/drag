@@ -1,3 +1,6 @@
-<p>
-  mouse works!
-</p>
+<div
+  #box
+  (window:mousedown)="drag($event)"
+  (window:mouseup)="drop()"
+  (window:mousemove)="move($event)"
+></div>
