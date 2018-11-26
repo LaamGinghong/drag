@@ -10,6 +10,7 @@ export class MouseComponent implements OnInit {
   dragging = false;
   mouseLeft: number;
   mouseTop: number;
+  body: Element;
 
   constructor(
     private renderer2: Renderer2
@@ -17,6 +18,7 @@ export class MouseComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.body = document.body;
   }
 
   drag(e: MouseEvent): void {
@@ -33,6 +35,46 @@ export class MouseComponent implements OnInit {
 
   move(e: MouseEvent): void {
     if (this.dragging) {
+      if (e.clientX - this.mouseLeft < 0 && e.clientY - this.mouseTop < 0) {
+        this.renderer2.setStyle(this.box.nativeElement, 'left', `0px`);
+        this.renderer2.setStyle(this.box.nativeElement, 'top', `0px`);
+        return;
+      }
+      if (e.clientX - this.mouseLeft + 200 > this.body.clientWidth && e.clientY - this.mouseTop + 200 > this.body.clientHeight) {
+        this.renderer2.setStyle(this.box.nativeElement, 'left', `${this.body.clientWidth - 200}px`);
+        this.renderer2.setStyle(this.box.nativeElement, 'top', `${this.body.clientHeight - 200}px`);
+        return;
+      }
+      if (e.clientX - this.mouseLeft < 0 && e.clientY - this.mouseTop + 200 > this.body.clientHeight) {
+        this.renderer2.setStyle(this.box.nativeElement, 'left', `0px`);
+        this.renderer2.setStyle(this.box.nativeElement, 'top', `${this.body.clientHeight - 200}px`);
+        return;
+      }
+      if (e.clientX - this.mouseLeft + 200 > this.body.clientWidth && e.clientY - this.mouseTop < 0) {
+        this.renderer2.setStyle(this.box.nativeElement, 'left', `${this.body.clientWidth - 200}px`);
+        this.renderer2.setStyle(this.box.nativeElement, 'top', `0px`);
+        return;
+      }
+      if (e.clientX - this.mouseLeft < 0) {
+        this.renderer2.setStyle(this.box.nativeElement, 'left', `0px`);
+        this.renderer2.setStyle(this.box.nativeElement, 'top', `${e.clientY - this.mouseTop}px`);
+        return;
+      }
+      if (e.clientY - this.mouseTop < 0) {
+        this.renderer2.setStyle(this.box.nativeElement, 'left', `${e.clientX - this.mouseLeft}px`);
+        this.renderer2.setStyle(this.box.nativeElement, 'top', `0px`);
+        return;
+      }
+      if (e.clientX - this.mouseLeft + 200 > this.body.clientWidth) {
+        this.renderer2.setStyle(this.box.nativeElement, 'left', `${this.body.clientWidth - 200}px`);
+        this.renderer2.setStyle(this.box.nativeElement, 'top', `${e.clientY - this.mouseTop}px`);
+        return;
+      }
+      if (e.clientY - this.mouseTop + 200 > this.body.clientHeight) {
+        this.renderer2.setStyle(this.box.nativeElement, 'left', `${e.clientX - this.mouseLeft}px`);
+        this.renderer2.setStyle(this.box.nativeElement, 'top', `${this.body.clientHeight - 200}px`);
+        return;
+      }
       this.renderer2.setStyle(this.box.nativeElement, 'left', `${e.clientX - this.mouseLeft}px`);
       this.renderer2.setStyle(this.box.nativeElement, 'top', `${e.clientY - this.mouseTop}px`);
     }
