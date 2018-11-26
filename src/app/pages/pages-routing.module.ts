@@ -9,6 +9,12 @@ const routes: Routes = [{
     path: '',
     redirectTo: 'draggable',
     pathMatch: 'full'
+  }, {
+    path: 'draggable',
+    loadChildren: './draggable/draggable.module#DraggableModule'
+  }, {
+    path: 'mouse',
+    loadChildren: './mouse/mouse.module#MouseModule'
   }]
 }];
 
