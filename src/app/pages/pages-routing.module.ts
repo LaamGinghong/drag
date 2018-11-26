@@ -1,6 +1,7 @@
-import {RouterModule, Routes} from '@angular/router';
+import {RouteReuseStrategy, RouterModule, Routes} from '@angular/router';
 import {PagesComponent} from './pages.component';
 import {NgModule} from '@angular/core';
+import {RouteCache} from './route-cache';
 
 const routes: Routes = [{
   path: 'pages',
@@ -20,7 +21,11 @@ const routes: Routes = [{
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [{
+    provide: RouteReuseStrategy,
+    useClass: RouteCache
+  }]
 })
 
 export class PagesRoutingModule {
