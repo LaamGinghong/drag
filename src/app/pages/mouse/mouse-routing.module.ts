@@ -1,16 +1,15 @@
 import {RouterModule, Routes} from '@angular/router';
+import {MouseComponent} from './mouse.component';
 import {NgModule} from '@angular/core';
 
 const routes: Routes = [{
   path: '',
-  redirectTo: 'pages',
-  pathMatch: 'full'
+  component: MouseComponent
 }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-
-export class AppRoutingModule {
+export class MouseRoutingModule {
 }

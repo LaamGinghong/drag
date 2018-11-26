@@ -1,10 +1,10 @@
 import {RouterModule, Routes} from '@angular/router';
+import {DraggableComponent} from './draggable.component';
 import {NgModule} from '@angular/core';
 
 const routes: Routes = [{
   path: '',
-  redirectTo: 'pages',
-  pathMatch: 'full'
+  component: DraggableComponent
 }];
 
 @NgModule({
@@ -12,5 +12,5 @@ const routes: Routes = [{
   exports: [RouterModule]
 })
 
-export class AppRoutingModule {
+export class DraggableRoutingModule {
 }
