@@ -1,6 +1,5 @@
-import {RouteReuseStrategy, RouterModule, Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
-import {RouteCache} from './pages/route-cache';
 
 const routes: Routes = [{
   path: '',
@@ -10,11 +9,7 @@ const routes: Routes = [{
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true})],
-  exports: [RouterModule],
-  providers: [{
-    provide: RouteReuseStrategy,
-    useClass: RouteCache
-  }]
+  exports: [RouterModule]
 })
 
 export class AppRoutingModule {

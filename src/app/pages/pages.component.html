@@ -1,10 +1,7 @@
 <nz-layout>
   <nz-header>
-    <button nz-button [nzType]="buttonType.draggable" (click)="changeRoute('draggable')" routerLink="/pages/draggable">
-      draggable
-    </button>
-    <button nz-button [nzType]="buttonType.mouse" (click)="changeRoute('mouse')" routerLink="/pages/mouse">mouse
-    </button>
+    <button nz-button [nzType]="buttonType.draggable" (click)="changeRoute('draggable')">draggable</button>
+    <button nz-button [nzType]="buttonType.mouse" (click)="changeRoute('mouse')">mouse</button>
   </nz-header>
   <nz-content>
     <router-outlet></router-outlet>

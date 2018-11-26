@@ -32,5 +32,6 @@ export class PagesComponent implements OnInit {
         this.buttonType[i] = i === route ? 'primary' : 'default';
       }
     }
+    this.route.navigateByUrl(`pages/${route}`);
   }
 }
