@@ -1,6 +1,6 @@
 <div
   #box
   draggable="true"
-  (dragstart)="drag($event)"
-  (dragend)="drop($event)"
+  appDrag
+  [box]="box"
 ></div>
