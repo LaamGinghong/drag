@@ -11,10 +11,12 @@ const routes: Routes = [{
     pathMatch: 'full'
   }, {
     path: 'draggable',
-    loadChildren: './draggable/draggable.module#DraggableModule'
+    loadChildren: './draggable/draggable.module#DraggableModule',
+    data: {keep: true}
   }, {
     path: 'mouse',
-    loadChildren: './mouse/mouse.module#MouseModule'
+    loadChildren: './mouse/mouse.module#MouseModule',
+    data: {keep: true}
   }]
 }];
 

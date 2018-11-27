@@ -16,7 +16,7 @@ export class SimpleReuseStrategy implements RouteReuseStrategy {
 
   /** 表示对所有路由允许复用 如果你有路由不想利用可以在这加一些业务逻辑判断 */
   public shouldDetach(route: ActivatedRouteSnapshot): boolean {
-    return true;
+    return route.data.keep;
   }
 
   /** 当路由离开时会触发。按path作为key存储路由快照&组件当前实例对象 */
